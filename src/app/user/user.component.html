@@ -1,0 +1,6 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <mat-form-field *ngFor="let user of userList" class="col-12">
+    <input matInput placeholder="{{user.id}}" type="text" value="{{user.firstName}}">
+  </mat-form-field>
+  <input type="submit" value="Update">
+</form>

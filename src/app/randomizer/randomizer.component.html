@@ -1,0 +1,19 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-select placeholder="Users" [formControl]="users" multiple>
+      <mat-option [value]="userList">All</mat-option>
+      <mat-option *ngFor="let user of userList" [value]="user">{{user.firstName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <input type="submit" value="Let's Randomize !">
+</form>
+
+
+<div *ngIf="shuffledGroup">
+  <h1>Resultat :</h1>
+  <div class="row">
+    <div *ngFor="let user of shuffledGroup" class="col-6 text-center">
+      {{user.firstName}}
+    </div>
+  </div>
+</div>
