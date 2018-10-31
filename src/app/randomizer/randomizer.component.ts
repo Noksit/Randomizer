@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../services/user';
 import {UserService} from '../services/user.service';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {group} from '@angular/animations';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-randomizer',
@@ -22,6 +21,7 @@ export class RandomizerComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    this.userList = Object.assign([], this.userList);
   }
 
   getUsers(): void {
@@ -29,12 +29,8 @@ export class RandomizerComponent implements OnInit {
   }
 
   onSubmit() {
-    let oSelectItems = this.users.value;
+    let oSelectItems = Object.assign([], this.users.value);
     oSelectItems.length === 1 ? this.shuffledGroup = this.shuffle(oSelectItems[0]) : this.shuffledGroup = this.shuffle(oSelectItems);
-  }
-
-  getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   shuffle(array) {
@@ -42,14 +38,11 @@ export class RandomizerComponent implements OnInit {
       temporaryValue,
       randomIndex;
 
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
 
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
 
-      // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;

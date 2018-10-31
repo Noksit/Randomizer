@@ -8,7 +8,7 @@ import {AppComponent} from '../app.component';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private appComponent: AppComponent) {
+  constructor(public appComponent: AppComponent) {
   }
 
   ngOnInit() {

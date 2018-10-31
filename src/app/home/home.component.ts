@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, AfterViewInit, AfterViewChecked} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 export interface DialogData {
@@ -12,12 +12,16 @@ export interface DialogData {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   constructor(public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    console.log(this.dialog);
-    window.setTimeout(this.aha.bind(this), 10000);
+    window.setTimeout(this.aha.bind(this), this.randomIntFromInterval(1000, 10000));
+  }
+
+  randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   aha(): void {
@@ -25,10 +29,9 @@ export class HomeComponent implements OnInit {
       width: '250px',
       data: {
         value: 'Marre d\'attendre ?',
-        text: 'Ca ne s\'arretera pas.'
+        text: ' Ca sert a rien...'
       }
     });
-
   }
 }
 
@@ -44,5 +47,10 @@ export class HomeDialogComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onContinue(): void {
+    console.log('home');
+    this.onNoClick();
   }
 }

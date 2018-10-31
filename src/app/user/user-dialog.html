@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{data.value}}</h1>
+<div mat-dialog-content>
+  <p>{{data.text}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="this.dialogRef.close()">Quit</button>
+  <button mat-button (click)="onContinue()">Continue</button>
+</div>

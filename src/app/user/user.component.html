@@ -1,6 +1,22 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <mat-form-field *ngFor="let user of userList" class="col-12">
-    <input matInput placeholder="{{user.id}}" type="text" value="{{user.firstName}}">
+<form [formGroup]="createForm" (ngSubmit)="wannaPlay() ? letsPlay() : onSubmit()">
+  <mat-form-field>
+    <input matInput
+           placeholder="new User"
+           formControlName="firstName"
+           name="new"
+           type="text"
+           value="">
   </mat-form-field>
-  <input type="submit" value="Update">
+  <br>
+  <mat-checkbox [formControl]="checkbox">Tu veux jouer a un jeu ?</mat-checkbox>
+  <br>
+  <input type="submit" id="validate" value="Valider">
 </form>
+<mat-list *ngFor="let user of userList">
+  <mat-list-item>
+    <a routerLink="/users/{{user.id}}" mat-raised-button color="primary">
+      {{user.firstName}}
+    </a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>

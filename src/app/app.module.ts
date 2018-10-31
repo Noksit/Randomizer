@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent, HomeDialogComponent} from './home/home.component';
 import {NavComponent} from './nav/nav.component';
-import {UserComponent} from './user/user.component';
+import {PlayDialogComponent, UserComponent} from './user/user.component';
 import {FooterComponent} from './footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RandomizerComponent} from './randomizer/randomizer.component';
@@ -13,10 +13,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatDialogModule, MatInputModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatInputModule,
+  MatListModule,
   MatProgressSpinnerModule,
   MatSelectModule
 } from '@angular/material';
+import {UserDetailComponent} from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,16 @@ import {
     UserComponent,
     FooterComponent,
     RandomizerComponent,
-    HomeDialogComponent
+    HomeDialogComponent,
+    PlayDialogComponent,
+    UserDetailComponent,
   ],
-  entryComponents: [HomeDialogComponent, HomeComponent],
+  entryComponents: [
+    HomeDialogComponent,
+    HomeComponent,
+    UserComponent,
+    PlayDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,9 +50,11 @@ import {
     MatSelectModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatDividerModule
   ],
-  providers: [],
+  providers: [UserComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
