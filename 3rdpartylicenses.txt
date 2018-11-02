@@ -367,13 +367,9 @@ MIT
 
 @angular/material/select
 
-@angular/material/list
+@angular/material/checkbox
 
 @angular/material/button
-
-@angular/material/divider
-
-@angular/material/checkbox
 
 @angular/material/dialog
 
